@@ -4,7 +4,7 @@ var usersController=require('./userscontroller');
 
 var usersRouting=express.Router();
 
-usersRouting.route('/get').get(usersController.get);
+usersRouting.route('/getusers').get(usersController.getusers);
 
 
 module.exports=usersRouting;

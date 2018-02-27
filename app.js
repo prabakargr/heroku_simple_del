@@ -13,7 +13,7 @@ var app=express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.use('/get',usersRouting);
+app.use('/users',usersRouting);
 
 
 var port=process.env.PORT || 6000;
