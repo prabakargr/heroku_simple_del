@@ -1,6 +1,6 @@
 var express=require('express');
 
-var usersController=require('./usersController');
+var usersController=require('./userscontroller');
 
 var usersRouting=express.Router();
 

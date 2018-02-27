@@ -1,8 +1,8 @@
-var User=require('./userModel');
+var Student=require('./userModel');
 var getusers=function(req,res){
-    User.find(function(err,users){
-        console.log(users)
-        res.send(users);
+    Student.find(function(err,students){
+        console.log(students)
+        res.send(students);
     })
 }
 
