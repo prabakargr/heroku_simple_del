@@ -55,8 +55,29 @@ var updateProfile=function(req,res){
 }
 
 
+// forgot password
+
+var forgotpwd=function(req,res){
+    var email={
+        email:req.body.email
+    }
+    console.log(email)
+    User.find(email,function (err,user) {
+
+        if(err){
+
+            res.send('err')
+        }else {
+            res.send(user);
+            console.log(user);
+        }
+    });
+};
+
+
 module.exports={
     getusers:getusers,
     adduser:adduser,
     updateProfile:updateProfile,
+    forgotpwd:forgotpwd,
 }

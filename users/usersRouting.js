@@ -7,6 +7,7 @@ var usersRouting=express.Router();
 usersRouting.route('/getusers').get(usersController.getusers);
 usersRouting.route('/adduser').post(usersController.adduser);
 usersRouting.route('/updateprofile').patch(usersController.updateProfile);
+usersRouting.route('/forgotpwd').post(usersController.forgotpwd);
 
 
 module.exports=usersRouting;
