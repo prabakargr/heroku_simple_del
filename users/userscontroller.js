@@ -92,6 +92,33 @@ var login=function(req,res){
     });
 };
 
+// change password (patch) method
+
+var changepwd = function(req, res){
+    var email = req.body.email;
+    var password = req.body.password;
+    var currentpass=req.body.currentpass;
+    User.findOne({email},function(err, user){
+        if(err){
+            res.status(404).send('No user found')
+        }else{
+            if(user.password==currentpass){
+                user.password=password;
+                user.save(function(err,user){
+                    if(err){
+                        res.send('Update failed')
+                    }else{
+                        res.send(user)
+                    }
+                })
+            }else{
+                res.send('current password is wrongs')
+            }
+        }
+    })
+  }
+
+
 
 module.exports={
     getusers:getusers,
@@ -99,4 +126,5 @@ module.exports={
     updateProfile:updateProfile,
     forgotpwd:forgotpwd,
     login:login,
+    changepwd:changepwd
 }
