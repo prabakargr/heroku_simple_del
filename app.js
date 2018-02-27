@@ -6,14 +6,14 @@ var bodyParser=require('body-parser');
 
 var db=mongoose.connect("mongodb://student:students@ds249418.mlab.com:49418/students")
 
-var Router = require('./router');
+var usersRouting = require('./usersRouting');
 
 var app=express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.use('/get',Router);
+app.use('/get',usersRouting);
 
 
 var port=process.env.PORT || 6000;
