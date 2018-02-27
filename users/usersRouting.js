@@ -8,6 +8,7 @@ usersRouting.route('/getusers').get(usersController.getusers);
 usersRouting.route('/adduser').post(usersController.adduser);
 usersRouting.route('/updateprofile').patch(usersController.updateProfile);
 usersRouting.route('/forgotpwd').post(usersController.forgotpwd);
+usersRouting.route('/login').post(usersController.login);
 
 
 module.exports=usersRouting;

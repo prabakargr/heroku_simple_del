@@ -73,6 +73,24 @@ var forgotpwd=function(req,res){
         }
     });
 };
+// find profile for login
+
+var login=function(req,res){
+    var login_id={
+        email:req.body.email,
+        password:req.body.password
+    }
+    console.log(login_id)
+    User.find(login_id,function (err,user) {
+
+        if(err){
+            res.send('err')
+        }else {
+            res.send(user);
+            console.log(user);
+        }
+    });
+};
 
 
 module.exports={
@@ -80,4 +98,5 @@ module.exports={
     adduser:adduser,
     updateProfile:updateProfile,
     forgotpwd:forgotpwd,
+    login:login,
 }
