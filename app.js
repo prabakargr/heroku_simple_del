@@ -8,12 +8,15 @@ var db=mongoose.connect("mongodb://project:tracking@ds229648.mlab.com:29648/proj
 
 var usersRouting = require('./users/usersRouting');
 
+var projectsRouting=require('./projects/projectsRouting');
+
 var app=express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 app.use('/users',usersRouting);
+app.use('/projects',projectsRouting);
 
 
 var port=process.env.PORT || 6000;
