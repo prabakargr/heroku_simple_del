@@ -6,7 +6,7 @@ var bodyParser=require('body-parser');
 
 var db=mongoose.connect("mongodb://project:tracking@ds229648.mlab.com:29648/project_tracking")
 
-var usersRouting = require('./usersRouting');
+var usersRouting = require('./users/usersRouting');
 
 var app=express();
 
