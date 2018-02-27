@@ -1,15 +1,17 @@
 var express=require('express');
 
+var mongoose=require('mongoose');
+
 var bodyParser=require('body-parser');
+
+var Router = require('./router');
 
 var app=express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.use('/get',function(err,res){
-    res.send('got')
-})
+app.use('/get',Router);
 
 
 var port=process.env.PORT || 6000;
