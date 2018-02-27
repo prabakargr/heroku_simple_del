@@ -26,7 +26,27 @@ var getProjects=function(req,res){
         }
     });
 };
+
+//project update
+
+var updateProject=function(req,res){
+    var appname=req.body.appname;
+    var client=req.body.client;
+    var appstatus=req.body.appstatus;
+    var comment=req.body.comment;
+    var date=req.body.date;
+    Project.findOneAndUpdate({appname,client},
+        {date,appstatus,comment},
+        function(err,project){
+            if(err){
+              res.status(404).send('connot update')  
+            }else{
+                res.status(200).send(project)
+            }
+    })
+}
 module.exports={
     addProject:addProject,
     getProjects:getProjects,
+    updateProject:updateProject
 }
