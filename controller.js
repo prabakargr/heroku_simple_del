@@ -1,5 +1,9 @@
+var Student=require('./studentModel');
 var get=function(req,res){
-    res.send('dumil');
+    Student.find(function(err,students){
+        console.log(students)
+        res.send(students);
+    })
 }
 
 module.exports.get=get;
