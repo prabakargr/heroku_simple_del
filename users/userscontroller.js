@@ -96,14 +96,14 @@ var login=function(req,res){
 
 var changepwd = function(req, res){
     var email = req.body.email;
-    var confirmpassword = req.body.confirmpassword;
+    var confirmPassword = req.body.confirmpassword;
     var currentpass=req.body.currentpass;
     User.findOne({email},function(err, user){
         if(err){
             res.status(404).send('No user found')
         }else{
             if(user.password==currentpass){
-                user.password=confirmpassword;
+                user.password=confirmPassword;
                 user.save(function(err,user){
                     if(err){
                         res.send('Update failed')
