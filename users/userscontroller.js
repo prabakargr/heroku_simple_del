@@ -96,7 +96,7 @@ var login=function(req,res){
 
 var changepwd = function(req, res){
     var email = req.body.email;
-    var confirmPassword = req.body.confirmpassword;
+    var confirmPassword = req.body.confirmPassword;
     var currentpass=req.body.currentpass;
     User.findOne({email},function(err, user){
         if(err){
