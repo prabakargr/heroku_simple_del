@@ -10,6 +10,8 @@ var usersRouting = require('./users/usersRouting');
 
 var projectsRouting=require('./projects/projectsRouting');
 
+var paymentsRouting=require('./payment/paymentsRouting');
+
 var app=express();
 
 app.use(bodyParser.json());
@@ -23,6 +25,7 @@ app.use(function(req, res, next) {
 
 app.use('/users',usersRouting);
 app.use('/projects',projectsRouting);
+app.use('/payments',paymentsRouting);
 
 
 var port=process.env.PORT || 6000;
