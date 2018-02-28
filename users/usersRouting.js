@@ -9,7 +9,7 @@ usersRouting.route('/adduser').post(usersController.adduser);
 usersRouting.route('/updateprofile').patch(usersController.updateProfile);
 usersRouting.route('/forgotpwd').post(usersController.forgotpwd);
 usersRouting.route('/login').post(usersController.login);
-usersRouting.route('/changepwd').patch(usersController.changepwd);
+usersRouting.route('/changepwd').post(usersController.changepwd);
 
 
 module.exports=usersRouting;
