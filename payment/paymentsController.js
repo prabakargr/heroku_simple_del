@@ -1,30 +1,34 @@
 var Payment=require('./paymentModel');
 
-
 var addpayment=function(req,res){
     var client=req.body.client;
-    var appname=req.body.appname;
-    var addpayment=req.body.addpayment;
-    var date=req.body.date;
-   
+    var appname=req.body.appname;  
     Payment.find({client,appname},function(err,payment){
-      
-        console.log(payment);
+      // console.log(payment);
+      //payment.paidamt.push(req.body.paidamt);
+      console.log(payment);
+      payment.save(function(err,uppay){
         if(err){
-            res.send('cAnnot')
+          res.send('connot');
         }else{
-            console.log(addpayment);
-            payment.save(addpayment,function(err,adpayment){
-                 console.log(adpayment);
-                 if(err){
-                     res.send('no adpayment');
-                 }else{
-                     res.send(adpayment);
-                 }
-             })
+          res.send(uppay);
         }
+      })
+      
     })
+}
+var addnewPayment=function(req,res){
+  var payment=new Payment(req.body);
+  console.log(payment);
+  payment.save(function(err,newpayment){
+if(err){
+  res.send('cannot add');
+}else{
+  res.send(newpayment);
+}
+  })
 }
 module.exports={
 addpayment:addpayment,
+addnewPayment:addnewPayment
 }

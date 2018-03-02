@@ -7,9 +7,11 @@ var paymentModel=new Schema({
     appname:String,
     totalcost:String,
     pendingamt:String,
-    paidamt:String,
-    addpayment:String,
-    date:String
+    paidamt:[{
+        addpayment:String,
+        date:String
+    }]
+    
 });
 
 module.exports=mongoose.model("payment",paymentModel);
