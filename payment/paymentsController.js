@@ -3,18 +3,27 @@ var Payment=require('./paymentModel');
 var addpayment=function(req,res){
     var client=req.body.client;
     var appname=req.body.appname;  
-    Payment.find({client,appname},function(err,payment){
+    Payment.findOne({client,appname},function(err,payment){
       // console.log(payment);
-      //payment.paidamt.push(req.body.paidamt);
-      console.log(payment);
-      payment.save(function(err,uppay){
-        if(err){
-          res.send('connot');
+      // var paying=this.payment;
+      if(err){
+        res.status(404)
+        res.send('not found')
+    }else{
+      // console.log(payment);
+      // payment.paidamt=req.body.paidamt;
+      payment.paidamt.push(req.body.paidamt);
+      console.log(payment.paidamt)
+      payment.save(function(err){
+        if(!err){
+          res.status(200);
+          res.send(payment);
         }else{
-          res.send(uppay);
+          res.status(500);
+          res.send('not found');
         }
       })
-      
+    } 
     })
 }
 var addnewPayment=function(req,res){
@@ -32,3 +41,14 @@ module.exports={
 addpayment:addpayment,
 addnewPayment:addnewPayment
 }
+
+// console.log(payment);
+      //payment.paidamt.push(req.body.paidamt);
+      // console.log(payment);
+      // payment.save(function(err,uppay){
+      //   if(err){
+      //     res.send('connot');
+      //   }else{
+      //     res.send(uppay);
+      //   }
+      // })
