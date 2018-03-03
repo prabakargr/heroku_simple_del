@@ -37,18 +37,18 @@ if(err){
 }
   })
 }
+var getClients=function(req,res){
+  Payment.find(function(err,clients){
+    if(err){
+      res.send('cannot add');
+    }else{
+      res.send(clients);
+    }
+  })
+}
 module.exports={
 addpayment:addpayment,
-addnewPayment:addnewPayment
+addnewPayment:addnewPayment,
+getClients:getClients
 }
 
-// console.log(payment);
-      //payment.paidamt.push(req.body.paidamt);
-      // console.log(payment);
-      // payment.save(function(err,uppay){
-      //   if(err){
-      //     res.send('connot');
-      //   }else{
-      //     res.send(uppay);
-      //   }
-      // })
