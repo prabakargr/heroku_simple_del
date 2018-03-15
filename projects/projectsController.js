@@ -1,5 +1,7 @@
 var Project=require('./projectModel');
 
+var Payment=require('../payment/paymentModel')
+
 // add new project
 
 var addProject=function(req,res){
@@ -8,7 +10,14 @@ var addProject=function(req,res){
         if(err){
             res.send('error');
         }else{
-            res.send(new_project);
+           var payment=new Payment(req.body);
+           payment.save(function(err){
+               if(err){
+                   res.send('error');
+               }else{
+                   res.send(payment);
+               }
+           }) 
         }
     });
 };
