@@ -50,7 +50,7 @@ var getClients=function(req,res){
 }
 module.exports={
 addpayment:addpayment,
-addnewPayment:addnewPayment,
+// addnewPayment:addnewPayment,
 getClients:getClients
 }
 
