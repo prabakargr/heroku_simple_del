@@ -7,8 +7,8 @@ var paymentModel=new Schema({
     appname:String,
     totalcost:String,
     pendingamt:String,
-    paidamt:[{
-        addpayment:String,
+    addpayment:[{
+        amount:String,
         date:String
     }]
     

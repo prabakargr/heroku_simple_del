@@ -26,17 +26,19 @@ var addpayment=function(req,res){
     } 
     })
 }
-var addnewPayment=function(req,res){
-  var payment=new Payment(req.body);
-  console.log(payment);
-  payment.save(function(err,newpayment){
-if(err){
-  res.send('cannot add');
-}else{
-  res.send(newpayment);
-}
-  })
-}
+// var addnewPayment=function(req,res){
+//   var payment=new Payment(req.body);
+//   console.log(payment);
+//   payment.save(function(err,newpayment){
+// if(err){
+//   res.send('cannot add');
+// }else{
+//   res.send(newpayment);
+// }
+//   })
+// }
+
+
 var getClients=function(req,res){
   Payment.find(function(err,clients){
     if(err){
