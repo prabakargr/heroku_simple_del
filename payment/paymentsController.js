@@ -12,8 +12,8 @@ var addpayment=function(req,res){
     }else{
       // console.log(payment);
       // payment.paidamt=req.body.paidamt;
-      payment.paidamt.push(req.body.paidamt);
-      console.log(payment.paidamt)
+      payment.addpayment.push(req.body.addpayment);
+      console.log(payment.addpayment)
       payment.save(function(err){
         if(!err){
           res.status(200);
