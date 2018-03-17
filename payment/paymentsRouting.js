@@ -9,4 +9,5 @@ paymentsRounting.route('/addpayment').post(paymentsController.addpayment);
 paymentsRounting.route('/getclients').get(paymentsController.getClients);
 
 
+
 module.exports=paymentsRounting;

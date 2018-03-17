@@ -54,8 +54,34 @@ var updateProject=function(req,res){
             }
     })
 }
+
+//delete project
+
+var deleteProject=function(req,res){
+    var appname=req.body.appname;
+    var client=req.body.client;
+    Project.findOne({appname,client},function(err,project){
+        console.log(project);
+        Project.remove(project,function(err){
+            if(!err){
+                Payment.findOne({appname,client},function(err,project){
+                    Payment.remove(project,function(err){
+                       if(!err){
+                           res.send('deleted')
+                       } else{
+                           res.send('cannot delete')
+                       }
+                    })
+                })
+            }else{
+                res.send("cant")
+            }
+        })
+    })
+}
 module.exports={
     addProject:addProject,
     getProjects:getProjects,
-    updateProject:updateProject
+    updateProject:updateProject,
+    deleteProject:deleteProject
 }
