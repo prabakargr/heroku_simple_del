@@ -79,9 +79,22 @@ var deleteProject=function(req,res){
         })
     })
 }
+
+var findProject=function(req,res){
+    var date=req.body.date;
+    Project.find({date},function(err,projects){
+        if(err){
+            res.send('cannot find')
+        }else{
+            res.send(projects);
+        }
+    })
+}
 module.exports={
     addProject:addProject,
     getProjects:getProjects,
     updateProject:updateProject,
-    deleteProject:deleteProject
+    deleteProject:deleteProject,
+    findProject:findProject
+    
 }
