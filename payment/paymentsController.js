@@ -38,6 +38,15 @@ var addpayment=function(req,res){
 //   })
 // }
 
+//for pending amt calculation
+
+var findProject=function(req,res){
+  var client=req.body.client;
+  var appname=req.body.appname;
+  Payment.findOne({client,appname},function(err,payment){
+     res.send(payment);
+  })
+}
 
 var getClients=function(req,res){
   Payment.find(function(err,clients){
@@ -50,7 +59,7 @@ var getClients=function(req,res){
 }
 module.exports={
 addpayment:addpayment,
-// addnewPayment:addnewPayment,
+findProject:findProject,
 getClients:getClients
 }
 
