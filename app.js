@@ -26,6 +26,8 @@ app.use(function(req, res, next) {
 app.use('/users',usersRouting);
 app.use('/projects',projectsRouting);
 app.use('/payments',paymentsRouting);
+app.use('/swaager', express.static('projectManagement'))
+
 
 
 var port=process.env.PORT || 6000;
