@@ -26,7 +26,14 @@ app.use(function(req, res, next) {
 app.use('/users',usersRouting);
 app.use('/projects',projectsRouting);
 app.use('/payments',paymentsRouting);
-app.use('/swagger', express.static(path.join(__dirname,'swagger')))
+
+process.env.PWD = process.cwd();
+
+app.set('views', path.join(process.env.PWD, 'public'));
+
+app.use('/swagger',express.static(path.join(process.env.PWD, 'swagger')));
+
+
 
 
 
