@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
 app.use('/users',usersRouting);
 app.use('/projects',projectsRouting);
 app.use('/payments',paymentsRouting);
-app.use('/swaager', express.static('swagger'))
+app.use('/swagger', express.static(path.join(__dirname,'swagger')))
 
 
 
