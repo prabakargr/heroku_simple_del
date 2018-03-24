@@ -31,7 +31,7 @@ app.use('/payments',paymentsRouting);
 
 process.env.PWD = process.cwd();
 
-app.set('views', path.join(process.env.PWD, 'public'));
+app.set('views', path.join(process.env.PWD, 'swagger'));
 
 app.use('/swagger',express.static(path.join(process.env.PWD, 'swagger')));
 
