@@ -14,7 +14,15 @@ var projectsRouting=require('./projects/projectsRouting');
 
 var paymentsRouting=require('./payment/paymentsRouting');
 
+
 var app=express();
+
+process.env.PWD = process.cwd();
+
+app.set('views', path.join(process.env.PWD, 'swagger'));
+
+app.use('/swagger',express.static(path.join(process.env.PWD, 'swagger')));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -29,16 +37,12 @@ app.use('/users',usersRouting);
 app.use('/projects',projectsRouting);
 app.use('/payments',paymentsRouting);
 
-process.env.PWD = process.cwd();
-
-app.set('views', path.join(process.env.PWD, 'swagger'));
-
-app.use('/swagger',express.static(path.join(process.env.PWD, 'swagger')));
 
 
 
 
 
-var port=process.env.PORT || 6000;
 
-app.listen(port, () => console.log(`Running on localhost:6000`));
+var port=process.env.PORT || (3000);
+
+app.listen(port, () => console.log(`Running on localhost:3000`));
