@@ -32,6 +32,7 @@ var updateProfile=function(req,res){
     var postalcode=req.body.postalcode;
     var company=req.body.company;
     var aboutme=req.body.aboutme;
+    var country=req.body.country
     User.findOneAndUpdate(
         {email,username},
         {
@@ -41,7 +42,8 @@ var updateProfile=function(req,res){
             city,
             postalcode,
             company,
-            aboutme
+            aboutme,
+            country
         },
         function(err,user){
             
