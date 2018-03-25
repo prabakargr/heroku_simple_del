@@ -19,9 +19,9 @@ var app=express();
 
 process.env.PWD = process.cwd();
 
-app.set('views', path.join(process.env.PWD, 'swagger'));
+app.set('views', path.join(process.env.PWD, 'public'));
 
-app.use('/swagger',express.static(path.join(process.env.PWD, 'swagger')));
+app.use('/swagger',express.static(path.join(process.env.PWD, 'public')));
 
 
 app.use(bodyParser.json());
