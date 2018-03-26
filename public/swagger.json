@@ -62,7 +62,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "new user added",
+            "description": "adding a new user schema",
             "required": true,
             "schema": {
               "$ref": "#/definitions/userdetails"
@@ -151,7 +151,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "To find the object",
+            "description": "forgot password schema",
             "required": true,
             "schema": {
               "$ref": "#/definitions/forgotpassword"
@@ -287,7 +287,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "find user and update profile",
+            "description": "adding new project schema",
             "required": true,
             "schema": {
               "$ref": "#/definitions/addproject"
@@ -444,7 +444,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "update project status",
+            "description": "delete project",
             "required": true,
             "schema": {
               "$ref": "#/definitions/projectdelete"
@@ -518,9 +518,9 @@
         "tags": [
           "payments"
         ],
-        "summary": "find project payment",
+        "summary": "find project for pending payment",
         "description": "",
-        "operationId": "find project payment",
+        "operationId": "find project payment pending",
         "consumes": [
           "application/json",
           "application/xml"
@@ -533,10 +533,44 @@
           {
             "in": "body",
             "name": "body",
-            "description": "find project",
+            "description": "find project for pending amt calculation",
             "required": true,
             "schema": {
               "$ref": "#/definitions/projectdelete"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/payments/addpayment": {
+      "post": {
+        "tags": [
+          "payments"
+        ],
+        "summary": "to add payment",
+        "description": "",
+        "operationId": "add payment",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "add a new payment",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addpayamt"
             }
           }
         ],
@@ -741,13 +775,41 @@
         },
         "client": {
           "type": "string"
-        },
-        "addpayment": {
-          "type": "string"
         }
       },
       "xml": {
         "name": "getclients"
+      }
+    },
+    "addpayamt": {
+      "type": "object",
+      "properties": {
+        "appname": {
+          "type": "string"
+        },
+        "client": {
+          "type": "string"
+        },
+        "addpayment": {
+          "$ref": "#/definitions/addpayment"
+        }
+      },
+      "xml": {
+        "name": "getclients"
+      }
+    },
+    "addpayment": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "addpay"
       }
     }
   }
