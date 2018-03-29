@@ -6,6 +6,10 @@ var path = require("path");
 
 var bodyParser=require('body-parser');
 
+var jwt = require('jsonwebtoken');
+
+var morgan = require('morgan');
+
 var db=mongoose.connect("mongodb://project:tracking@ds229648.mlab.com:29648/project_tracking")
 
 var usersRouting = require('./users/usersRouting');
@@ -14,8 +18,11 @@ var projectsRouting=require('./projects/projectsRouting');
 
 var paymentsRouting=require('./payment/paymentsRouting');
 
+var config = require('./config');
 
 var app=express();
+
+app.set('superSecret', config.secret);
 
 process.env.PWD = process.cwd();
 
