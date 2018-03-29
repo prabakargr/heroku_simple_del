@@ -10,6 +10,12 @@ var config = require('../config');
 
 app.set('superSecret', config.secret);
 
+app.use(function(req, res, next) {  
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 
 //add user
 var adduser=function (req,res) {
@@ -157,7 +163,7 @@ var changepwd = function(req, res){
           role: user.role 
         };
             var token = jwt.sign(payload, app.get('superSecret'), {
-              expiresInMinutes: 1440 // expires in 24 hours
+            //   expiresInMinutes: 1440 // expires in 24 hours
             });
     
             // return the information including token as JSON
