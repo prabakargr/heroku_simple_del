@@ -173,7 +173,7 @@ var changepwd = function(req, res){
               success: true,
               message: 'Enjoy your token!',
               token: token
-            });
+            }).status(200);
           }   
     
         }
