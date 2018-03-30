@@ -92,24 +92,24 @@ var forgotpwd=function(req,res){
         }
     });
 };
-//find profile for login
+// find profile for login
 
-var login=function(req,res){
-    var login_id={
-        email:req.body.email,
-        password:req.body.password
-    }
-    console.log(login_id)
-    User.find(login_id,function (err,user) {
+// var login=function(req,res){
+//     var login_id={
+//         email:req.body.email,
+//         password:req.body.password
+//     }
+//     console.log(login_id)
+//     User.find(login_id,function (err,user) {
 
-        if(err){
-            res.send('err')
-        }else {
-            res.send(user);
-            console.log(user);
-        }
-    });
-};
+//         if(err){
+//             res.send('err')
+//         }else {
+//             res.send(user);
+//             console.log(user);
+//         }
+//     });
+// };
 
 // change password (patch) method
 
@@ -137,48 +137,49 @@ var changepwd = function(req, res){
     })
   }
 
-//   var login=function(req,res){
+  var login=function(req,res){
       
 
-//     // find the user
-//     User.findOne({
-//         email: req.body.email
-//       }, function(err, user) {
+    // find the user
+    User.findOne({
+        email: req.body.email
+      }, function(err, user) {
     
-//         if (err) throw err;
+        if (err) throw err;
     
-//         if (!user) {
-//           res.json({ success: false, message: 'Authentication failed. User not found.' });
-//         } else if (user) {
+        if (!user) {
+          res.json({ success: false, message: 'Authentication failed. User not found.' });
+        } else if (user) {
     
-//           // check if password matches
-//           if (user.password != req.body.password) {
-//             res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-//           } else {
+          // check if password matches
+          if (user.password != req.body.password) {
+            res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+          } else {
     
-//             // if user is found and password is right
-//             // create a token with only our given payload
-//         // we don't want to pass in the entire user since that has the password
-//         const payload = {
-//           role: user.role 
-//         };
-//             var token = jwt.sign(payload, app.get('superSecret'), {
-//             //   expiresInMinutes: 1440 // expires in 24 hours
+            // if user is found and password is right
+            // create a token with only our given payload
+        // we don't want to pass in the entire user since that has the password
+        const payload = {
+          role: user.role 
+        };
+        console.log(payload);
+            var token = jwt.sign(payload, app.get('superSecret'),{
+            //   expiresInMinutes: 1440 // expires in 24 hours
            
-//             });
-//             console.log(token);
-//             // return the information including token as JSON
-//             res.json({
-//               success: true,
-//               message: 'Enjoy your token!',
-//               token: token
-//             });
-//           }   
+            });
+            console.log(token);
+            // return the information including token as JSON
+            res.json({
+              success: true,
+              message: 'Enjoy your token!',
+              token: token
+            });
+          }   
     
-//         }
+        }
     
-//       });
-//   }
+      });
+  }
 
 
 
