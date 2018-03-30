@@ -160,6 +160,8 @@ var changepwd = function(req, res){
             // create a token with only our given payload
         // we don't want to pass in the entire user since that has the password
         const payload = {
+          email:user.email,
+          username:user.username,  
           role: user.role 
         };
         console.log(payload);
