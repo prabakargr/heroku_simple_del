@@ -161,7 +161,7 @@ var changepwd = function(req, res){
         };
         console.log(payload);
             var token = jwt.sign(payload, app.get('superSecret'),{
-              expiresInMinutes: 1440 // expires in 24 hours
+             // expiresInMinutes: 1440 // expires in 24 hours
            
             });
             console.log(token);
