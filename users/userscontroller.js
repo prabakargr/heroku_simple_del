@@ -14,15 +14,41 @@ app.set('superSecret', config.secret);
 
 //add user
 var adduser=function (req,res) {
-    var user=new User(req.body);
-    user.save(function (err) {
-        if(err){
-            res.send('cannot reqister')
-        }else{
-            res.send(user)
-        }
-    });
-};
+    var token = req.headers['x-access-token'];
+
+    if (token) {
+
+        // verifies secret and checks exp
+        jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+          if (err) {
+            return res.json({ success: false, message: 'Failed to authenticate token.' });    
+          } else {
+            // if everything is good, save to request for use in other routes
+            // req.decoded = decoded;    
+            // next();
+            var user=new User(req.body);
+            user.save(function (err) {
+                if(err){
+                    res.send('cannot reqister')
+                }else{
+                    res.send(user)
+                }
+            });
+          }
+        });
+    
+      } else {
+    
+        // if there is no token
+        // return an error
+        return res.status(403).send({ 
+            success: false, 
+            message: 'No token provided.' 
+        });
+
+ 
+    };
+}
 
 //get users
 var getusers=function(req,res){
