@@ -27,6 +27,7 @@ var adduser=function (req,res) {
             // req.decoded = decoded;    
             // next();
             var user=new User(req.body);
+console.log(user)
             user.save(function (err) {
                 if(err){
                     res.send('cannot reqister')
