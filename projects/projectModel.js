@@ -7,7 +7,7 @@ var projectModel=new Schema({
     appname: String,
     client: String,
     appstatus: String,
-    payment: String,
+    totalcost: String,
     comment: String,
     date: String,
     timelimit:String,
