@@ -102,23 +102,21 @@ var getusers=function(req,res){
             // next();
             var email=req.body.email;
             var username=req.body.username;
-            var firstname=req.body.firstname;
-            var lastname=req.body.lastname;
+            var fname=req.body.fname;
+            var lname=req.body.lname;
             var address=req.body.address;
             var city=req.body.city;
-            var postalcode=req.body.postalcode;
-            var company=req.body.company;
+            var postal=req.body.postal;
             var aboutme=req.body.aboutme;
             var country=req.body.country
             User.findOneAndUpdate(
                 {email,username},
                 {
-                    firstname,
-                    lastname,
+                    fname,
+                    lname,
                     address,
                     city,
-                    postalcode,
-                    company,
+                    postal,
                     aboutme,
                     country
                 },
@@ -248,7 +246,14 @@ var changepwd = function(req, res){
         const payload = {
           email:user.email,
           username:user.username,  
-          role: user.role 
+          role: user.role,
+          fname:user.fname,
+          lname:user.lname,
+          city:user.city,
+          postal:user.postal,
+          aboutme:user.aboutme,
+          country:user.country,
+          address:user.address 
         };
         console.log(payload);
             var token = jwt.sign(payload, app.get('superSecret'),{
